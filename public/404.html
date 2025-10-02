@@ -46,26 +46,8 @@
     </div>
 
     <script>
-        // Redirect to the root of the app to let React Router handle the routing
-        const currentPath = window.location.pathname;
-        const currentSearch = window.location.search;
-        const currentHash = window.location.hash;
-        
-        // Try to redirect to index.html and preserve the path
-        if (currentPath !== '/' && !currentPath.includes('index.html')) {
-            // Preserve the original path for React Router
-            sessionStorage.setItem('react-router-redirect', currentPath + currentSearch + currentHash);
-            window.location.replace('/index.html');
-        } else {
-            // If we're already at index.html or root, try to apply the stored redirect
-            const redirectPath = sessionStorage.getItem('react-router-redirect');
-            if (redirectPath) {
-                sessionStorage.removeItem('react-router-redirect');
-                window.history.replaceState(null, null, redirectPath);
-                // Reload to let React Router process the path
-                window.location.reload();
-            }
-        }
+        // Directly redirect to home page (/)
+        window.location.replace('/');
     </script>
 </body>
 </html>
